@@ -84,164 +84,300 @@ namespace ExportadorDados
                             "'" + item.UNIDADEENT + "', " +
                             "'" + item.UNIDADESAIDA + "', " +
                             "'" + item.FATORCONVERSAO + "', " +
-                            "'" + item.MULTDIVIDE + "', " +
-                            "'" + item.PR_ULT_ENT1 + "', " +
-                            "'" + item.DATA_ULT_ENT1 + "', " +
-                            "'" + item.QUANT_ULT_ENT1 + "', " +
-                            "'" + item.FORNEC_ULT_ENT1 + "', " +
-                            "'" + item.PR_ULT_ENT2 + "', " +
-                            "'" + item.DATA_ULT_ENT2 + "', " +
-                            "'" + item.QUANT_ULT_ENT2 + "', " +
-                            "'" + item.FORNEC_ULT_ENT2 + "', " +
-                            "'" + item.PR_ULT_ENT3 + "', " +
-                            "'" + item.DATA_ULT_ENT3 + "', " +
-                            "'" + item.QUANT_ULT_ENT3 + "', " +
-                            "'" + item.FORNEC_ULT_ENT3 + "', " +
-                            "'" + item.DVV + "', " +
-                            "'" + item.LUCRO + "', " +
-                            "'" + item.SUGESTAO + "', " +
-                            "'" + item.PRECO + "', " +
-                            "'" + item.PRODBLOQUEADO + "', " +
-                            "'" + item.CAMPOLIVRE1 + "', " +
-                            "'" + item.CAMPOLIVRE2 + "', " +
-                            "'" + item.CAMPOLIVRE3 + "', " +
-                            "'" + item.CAMPOLIVRE4 + "', " +
-                            "'" + item.PRINCIPALFORNEC + "', " +
-                            "'" + item.NOTA_ULT_ENT1 + "', " +
-                            "'" + item.NOTA_ULT_ENT2 + "', " +
-                            "'" + item.NOTA_ULT_ENT3 + "', " +
-                            "'" + item.CONTROLESERIE + "', " +
-                            "'" + item.CODPRODBAIXA + "', " +
-                            "'" + item.FATORCONVBAIXA + "', " +
-                            "'" + item.MULTDIVBAIXA + "', " +
-                            "'" + item.CODFRETE + "', " +
-                            "'" + item.DT_CADASTRO + "', " +
-                            "'" + item.DESCRICAOPRECO + "', " +
-                            "'" + item.PRECO2 + "', " +
-                            "'" + item.DESCRICAOPRECO2 + "', " +
-                            "'" + item.PRECO3 + "', " +
-                            "'" + item.DESCRICAOPRECO3 + "', " +
-                            "'" + item.LUCRO2 + "', " +
-                            "'" + item.LUCRO3 + "', " +
-                            "'" + item.ITEMPORTARIA790 + "', " +
-                            "'" + item.ENVIADO + "', " +
-                            "'" + item.PRECODOLAR + "', " +
-                            "'" + item.DATA_ULT_ALTERACAO + "', " +
-                            "'" + item.PERCPERDA + "', " +
-                            "'" + item.PRECOPROMO + "', " +
-                            "'" + item.DATAINIPROMO + "', " +
-                            "'" + item.DATAFIMPROMO + "', " +
-                            "'" + item.SUBSTRIBSAIDA + "', " +
-                            "'" + item.PERCBASESUBSTRIBSAIDA + "', " +
-                            "'" + item.PERCICMSSUBSTRIBSAIDA + "', " +
-                            "'" + item.TEMSUBITENS + "', " +
-                            "'" + item.CODSEGMENTOSUBTRIBSAIDA + "', " +
-                            "'" + item.ALIQICMSDIVERSOS + "', " +
-                            "'" + item.BASEICMSDIVERSOS + "', " +
-                            "'" + item.CODTRIBUTDIVERSOS + "', " +
-                            "'" + item.MENSAGEMDIVERSOS + "', " +
-                            "'" + item.TIPODIVERSOS + "', " +
-                            "'" + item.CONTACXA + "', " +
-                            "'" + item.PERCICMMARGEMLUCRO + "', " +
-                            "'" + item.ALIQINTERNAICMLUCRO + "', " +
-                            "'" + item.SEGMENTOICMLUCRO + "', " +
-                            "'" + item.SEGMENTOICMDIVERSOS + "', " +
-                            "'" + item.ALIQICMSDIVERSOS2 + "', " +
-                            "'" + item.BASEICMSDIVERSOS2 + "', " +
-                            "'" + item.CODTRIBUTDIVERSOS2 + "', " +
-                            "'" + item.MENSAGEMDIVERSOS2 + "', " +
-                            "'" + item.CONTROLELOTE + "', " +
-                            "'" + item.GRADE + "', " +
-                            "'" + item.ACEITAPRECOZERO + "', " +
-                            "'" + item.VLRCOBRAROPER + "', " +
-                            "'" + item.COMISSAOVLR + "', " +
-                            "'" + item.GARANTIA + "', " +
-                            "'" + item.IPIANTIGO + "', " +
-                            "'" + item.CUSTODOLAR + "', " +
-                            "'" + item.ALIQICMSPDV + "', " +
-                            "'" + item.TEMREBATEFINANC + "', " +
-                            "'" + item.LUCRO4 + "', " +
-                            "'" + item.DESCRICAOPRECO4 + "', " +
-                            "'" + item.PRECO4 + "', " +
-                            "'" + item.PRODBALANCA + "', " +
-                            "'" + item.SUBSTRIBSAIDAR1 + "', " +
-                            "'" + item.PERCBASESUBSTRIBSAIDAR1 + "', " +
-                            "'" + item.PERCICMSSUBSTRIBSAIDAR1 + "', " +
-                            "'" + item.SUBSTRIBSAIDAR2 + "', " +
-                            "'" + item.PERCBASESUBSTRIBSAIDAR2 + "', " +
-                            "'" + item.PERCICMSSUBSTRIBSAIDAR2 + "', " +
-                            "'" + item.SUBSTRIBSAIDAR3 + "', " +
-                            "'" + item.PERCBASESUBSTRIBSAIDAR3 + "', " +
-                            "'" + item.PERCICMSSUBSTRIBSAIDAR3 + "', " +
-                            "'" + item.DESCONTOMAXIMO + "', " +
-                            "'" + item.TIPOMEDICAMENTO + "', " +
-                            "'" + item.DESCPERCPADRAO + "', " +
-                            "'" + item.LUCROPREVISTO + "', " +
-                            "'" + item.REDUTOR + "', " +
-                            "'" + item.ITEMPORTARIAFORAUF + "', " +
-                            "'" + item.DATA_ULT_REAJUSTE + "', " +
-                            "'" + item.PRECO_ANTERIOR + "', " +
-                            "'" + item.CODVOLUME + "', " +
-                            "'" + item.FRACIONADO + "', " +
-                            "'" + item.CODGENEROITEM + "', " +
-                            "'" + item.CUSTOOPERC + "', " +
-                            "'" + item.PERC_IVA + "', " +
-                            "'" + item.VALORIPI + "', " +
-                            "'" + item.TIPOENTREGA + "', " +
-                            "'" + item.LIMINILOTEENTREGA + "', " +
-                            "'" + item.LIMFIMLOTEENTREGA + "', " +
-                            "'" + item.CONSIDERACOMISSAO + "', " +
-                            "'" + item.MULTIPLO + "', " +
-                            "'" + item.UNIDADEMULTIPLO + "', " +
-                            "'" + item.SUBSTRIBSAIDAR4 + "', " +
-                            "'" + item.PERCBASESUBSTRIBSAIDAR4 + "', " +
-                            "'" + item.PERCICMSSUBSTRIBSAIDAR4 + "', " +
-                            "'" + item.TIPOLISTA + "', " +
-                            "'" + item.CODPRODPRODUCAO + "', " +
-                            "'" + item.FARMACIAPOPULAR + "', " +
-                            "'" + item.CFOPDENTROUF + "', " +
-                            "'" + item.CFOPFORAUF + "', " +
-                            "'" + item.CODPRODPAI + "', " +
-                            "'" + item.CODFAMILIA + "', " +
-                            "'" + item.CODTIPOPRODUTO + "', " +
-                            "'" + item.CODPRODANP + "', " +
-                            "'" + item.VERSION + "', " +
-                            "'" + item.AGROTOXICO + "', " +
-                            "'" + item.CODIGOMAPA + "', " +
-                            "'" + item.CODIGOEMBALAGEM + "', " +
-                            "'" + item.ETQPRECOBASE + "', " +
-                            "'" + item.ETQPARCELAMENTO + "', " +
-                            "'" + item.ETQTXMES + "', " +
-                            "'" + item.ETQINFTXMES + "', " +
-                            "'" + item.ETQINFPRECOBASE + "', " +
-                            "'" + item.ETQINFPRECOAPRAZO + "', " +
-                            "'" + item.ETQINFTXDIA + "', " +
-                            "'" + item.PERCIVASUBSTRIBSAIDA + "', " +
-                            "'" + item.PERCIVASUBSTRIBSAIDA1 + "', " +
-                            "'" + item.PERCIVASUBSTRIBSAIDA2 + "', " +
-                            "'" + item.PERCIVASUBSTRIBSAIDA3 + "', " +
-                            "'" + item.PERCIVASUBSTRIBSAIDA4 + "', " +
-                            "'" + item.IDPRODUTOJAVA + "', " +
-                            "'" + item.TIPOSINC + "', " +
-                            "'" + item.IMPORTAPRODECOM + "', " +
-                            "'" + item.IDPRODUTOECOM + "', " +
-                            "'" + item.IAT + "', " +
-                            "'" + item.CODENQIPI + "', " +
-                            "'" + item.CODNATRECEITA + "', " +
-                            "'" + item.IDNATRECEITA + "', " +
-                            "'" + item.CODCEST + "', " +
-                            "'" + item.TIPOMATEREMBA + "', " +
-                            "'" + item.IDPARCEIRO + "', " +
-                            "'" + item.TIPOEQPREDUCAOBASEDIFAL + "', " +
-                            "'" + item.CODSELFCOLOR + "', " +
-                            "'" + item.PERCENTDESCTOPROMOCAO + "', " +
-                            "'" + item.CODSHOTCOLOR
-                );
-            if (!String.IsNullOrEmpty(item.TEMREBATEFINANC))
+                            "'" + item.MULTDIVIDE + "', ");
+            if (item.PR_ULT_ENT1 != 0)
+            {
+                sb.Append("'" + item.PR_ULT_ENT1 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DATA_ULT_ENT1.Day != 1 || item.DATA_ULT_ENT1.Month != 1 || item.DATA_ULT_ENT1.Year != 1)
+            {
+                sb.Append("'" + item.DATA_ULT_ENT1 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.QUANT_ULT_ENT1 == 0)
+            {
+                sb.Append("'" + item.QUANT_ULT_ENT1 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.PR_ULT_ENT2 != 0)
+            {
+                sb.Append("'" + item.PR_ULT_ENT2 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DATA_ULT_ENT2.Day != 1 || item.DATA_ULT_ENT2.Month != 1 || item.DATA_ULT_ENT2.Year != 1)
+            {
+                sb.Append("'" + item.DATA_ULT_ENT2 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.QUANT_ULT_ENT2 == 0)
+            {
+                sb.Append("'" + item.QUANT_ULT_ENT2 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.PR_ULT_ENT3 != 0)
+            {
+                sb.Append("'" + item.PR_ULT_ENT3 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DATA_ULT_ENT3.Day != 1 || item.DATA_ULT_ENT3.Month != 1 || item.DATA_ULT_ENT3.Year != 1)
+            {
+                sb.Append("'" + item.DATA_ULT_ENT3 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.QUANT_ULT_ENT3 == 0)
+            {
+                sb.Append("'" + item.QUANT_ULT_ENT3 + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.DVV + "', " +
+            "'" + item.LUCRO + "', ");
+            if (item.SUGESTAO != 0)
+            {
+                sb.Append("'" + item.SUGESTAO + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.PRECO + "', " +
+            "'" + item.PRODBLOQUEADO + "', " +
+            "'" + item.CAMPOLIVRE1 + "', " +
+            "'" + item.CAMPOLIVRE2 + "', " +
+            "'" + item.CAMPOLIVRE3 + "', " +
+            "'" + item.CAMPOLIVRE4 + "', " +
+            "'" + item.PRINCIPALFORNEC + "', ");
+            if (item.NOTA_ULT_ENT1 != null)
+            {
+                sb.Append("'" + item.NOTA_ULT_ENT1 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.NOTA_ULT_ENT2 != null)
+            {
+                sb.Append("'" + item.NOTA_ULT_ENT2 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.NOTA_ULT_ENT3 != null)
+            {
+                sb.Append("'" + item.NOTA_ULT_ENT3 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.CONTROLESERIE != null)
+            {
+                sb.Append("'" + item.CONTROLESERIE + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.CODPRODBAIXA + "', " +
+            "'" + item.FATORCONVBAIXA + "', " +
+            "'" + item.MULTDIVBAIXA + "', ");
+            if (item.CODFRETE != null)
+            {
+                sb.Append("'" + item.CODFRETE + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.DT_CADASTRO + "', " +
+            "'" + item.DESCRICAOPRECO + "', " +
+            "'" + item.PRECO2 + "', " +
+            "'" + item.DESCRICAOPRECO2 + "', " +
+            "'" + item.PRECO3 + "', " +
+            "'" + item.DESCRICAOPRECO3 + "', " +
+            "'" + item.LUCRO2 + "', " +
+            "'" + item.LUCRO3 + "', ");
+            if (item.ITEMPORTARIA790 != null)
+            {
+                sb.Append("'" + item.ITEMPORTARIA790 + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.ENVIADO != null)
+            {
+                sb.Append("'" + item.ENVIADO + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.PRECODOLAR + "', ");
+            if (item.DATA_ULT_ALTERACAO.Day != 1 || item.DATA_ULT_ALTERACAO.Month != 1 || item.DATA_ULT_ALTERACAO.Year != 1)
+            {
+                sb.Append("'" + item.DATA_ULT_ALTERACAO + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.PERCPERDA + "', " +
+            "'" + item.PRECOPROMO + "', ");
+            if (item.DATAINIPROMO.Day != 1 || item.DATAINIPROMO.Month != 1 || item.DATAINIPROMO.Year != 1)
+            {
+                sb.Append("'" + item.DATAINIPROMO + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DATAFIMPROMO.Day != 1 || item.DATAFIMPROMO.Month != 1 || item.DATAFIMPROMO.Year != 1)
+            {
+                sb.Append("'" + item.DATAFIMPROMO + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.SUBSTRIBSAIDA + "', " +
+            "'" + item.PERCBASESUBSTRIBSAIDA + "', " +
+            "'" + item.PERCICMSSUBSTRIBSAIDA + "', ");
+            if (item.TEMSUBITENS != null)
+            {
+                sb.Append("'" + item.TEMSUBITENS + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.CODSEGMENTOSUBTRIBSAIDA + "', " +
+            "'" + item.ALIQICMSDIVERSOS + "', " +
+            "'" + item.BASEICMSDIVERSOS + "', " +
+            "'" + item.CODTRIBUTDIVERSOS + "', " +
+            "'" + item.MENSAGEMDIVERSOS + "', " +
+            "'" + item.TIPODIVERSOS + "', " +
+            "'" + item.CONTACXA + "', " +
+            "'" + item.PERCICMMARGEMLUCRO + "', " +
+            "'" + item.ALIQINTERNAICMLUCRO + "', " +
+            "'" + item.SEGMENTOICMLUCRO + "', " +
+            "'" + item.SEGMENTOICMDIVERSOS + "', " +
+            "'" + item.ALIQICMSDIVERSOS2 + "', " +
+            "'" + item.BASEICMSDIVERSOS2 + "', " +
+            "'" + item.CODTRIBUTDIVERSOS2 + "', " +
+            "'" + item.MENSAGEMDIVERSOS2 + "', ");
+            if (item.CONTROLELOTE != null)
+            {
+                sb.Append("'" + item.CONTROLELOTE + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.GRADE + "', ");
+            if (item.ACEITAPRECOZERO != null)
+            {
+                sb.Append("'" + item.ACEITAPRECOZERO + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.VLRCOBRAROPER + "', " +
+            "'" + item.COMISSAOVLR + "', ");
+            if (item.GARANTIA != 0)
+            {
+                sb.Append("'" + item.GARANTIA + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.IPIANTIGO + "', " +
+            "'" + item.CUSTODOLAR + "', " +
+            "'" + item.ALIQICMSPDV + "', ");
+            if (item.TEMREBATEFINANC != null)
             {
                 sb.Append("'" + item.TEMREBATEFINANC + "'");
             }
             else sb.Append(" NULL,");
+            sb.Append("'" + item.LUCRO4 + "', " +
+            "'" + item.DESCRICAOPRECO4 + "', " +
+            "'" + item.PRECO4 + "', ");
+            if (item.PRODBALANCA != null)
+            {
+                sb.Append("'" + item.PRODBALANCA + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.SUBSTRIBSAIDAR1 + "', " +
+            "'" + item.PERCBASESUBSTRIBSAIDAR1 + "', " +
+            "'" + item.PERCICMSSUBSTRIBSAIDAR1 + "', " +
+            "'" + item.SUBSTRIBSAIDAR2 + "', " +
+            "'" + item.PERCBASESUBSTRIBSAIDAR2 + "', " +
+            "'" + item.PERCICMSSUBSTRIBSAIDAR2 + "', " +
+            "'" + item.SUBSTRIBSAIDAR3 + "', " +
+            "'" + item.PERCBASESUBSTRIBSAIDAR3 + "', " +
+            "'" + item.PERCICMSSUBSTRIBSAIDAR3 + "', " +
+            "'" + item.DESCONTOMAXIMO + "', ");
+            if (item.TIPOMEDICAMENTO > 0)
+            {
+                sb.Append("'" + item.TIPOMEDICAMENTO + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DESCPERCPADRAO > 0)
+            {
+                sb.Append("'" + item.DESCPERCPADRAO + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.LUCROPREVISTO > 0)
+            {
+                sb.Append("'" + item.LUCROPREVISTO + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.LUCROPREVISTO > 0)
+            {
+                sb.Append("'" + item.LUCROPREVISTO + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.REDUTOR > 0)
+            {
+                sb.Append("'" + item.REDUTOR + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.ITEMPORTARIAFORAUF != null)
+            {
+                sb.Append("'" + item.ITEMPORTARIAFORAUF + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.DATA_ULT_REAJUSTE.Day != 1 || item.DATA_ULT_REAJUSTE.Month != 1 || item.DATA_ULT_REAJUSTE.Year != 1)
+            {
+                sb.Append("'" + item.DATA_ULT_REAJUSTE + "'");
+            }
+            else sb.Append(" NULL,");
+            if (item.PRECO_ANTERIOR != 0)
+            {
+                sb.Append("'" + item.PRECO_ANTERIOR + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.CODVOLUME + "', " +
+            "'" + item.FRACIONADO + "', " +
+            "'" + item.CODGENEROITEM + "', ");
+            if (item.CUSTOOPERC != 0)
+            {
+                sb.Append("'" + item.CUSTOOPERC + "'");
+            }
+            else sb.Append(" NULL,");
+            sb.Append("'" + item.PERC_IVA + "', " +
+            "'" + item.VALORIPI + "', " +
+            "'" + item.TIPOENTREGA + "', " +
+            "'" + item.LIMINILOTEENTREGA + "', " +
+            "'" + item.LIMFIMLOTEENTREGA + "', " +
+            "'" + item.CONSIDERACOMISSAO + "', " +
+            "'" + item.MULTIPLO + "', " +
+            "'" + item.UNIDADEMULTIPLO + "', " +
+            "'" + item.SUBSTRIBSAIDAR4 + "', " +
+            "'" + item.PERCBASESUBSTRIBSAIDAR4 + "', " +
+            "'" + item.PERCICMSSUBSTRIBSAIDAR4 + "', " +
+            "'" + item.TIPOLISTA + "', " +
+            "'" + item.CODPRODPRODUCAO + "', " +
+            "'" + item.FARMACIAPOPULAR + "', " +
+            "'" + item.CFOPDENTROUF + "', " +
+            "'" + item.CFOPFORAUF + "', " +
+            "'" + item.CODPRODPAI + "', " +
+            "'" + item.CODFAMILIA + "', " +
+            "'" + item.CODTIPOPRODUTO + "', " +
+            "'" + item.CODPRODANP + "', " +
+            "'" + item.VERSION + "', " +
+            "'" + item.AGROTOXICO + "', " +
+            "'" + item.CODIGOMAPA + "', " +
+            "'" + item.CODIGOEMBALAGEM + "', " +
+            "'" + item.ETQPRECOBASE + "', " +
+            "'" + item.ETQPARCELAMENTO + "', " +
+            "'" + item.ETQTXMES + "', " +
+            "'" + item.ETQINFTXMES + "', " +
+            "'" + item.ETQINFPRECOBASE + "', " +
+            "'" + item.ETQINFPRECOAPRAZO + "', " +
+            "'" + item.ETQINFTXDIA + "', " +
+            "'" + item.PERCIVASUBSTRIBSAIDA + "', " +
+            "'" + item.PERCIVASUBSTRIBSAIDA1 + "', " +
+            "'" + item.PERCIVASUBSTRIBSAIDA2 + "', " +
+            "'" + item.PERCIVASUBSTRIBSAIDA3 + "', " +
+            "'" + item.PERCIVASUBSTRIBSAIDA4 + "', " +
+            "'" + item.IDPRODUTOJAVA + "', " +
+            "'" + item.TIPOSINC + "', " +
+            "'" + item.IMPORTAPRODECOM + "', " +
+            "'" + item.IDPRODUTOECOM + "', " +
+            "'" + item.IAT + "', " +
+            "'" + item.CODENQIPI + "', " +
+            "'" + item.CODNATRECEITA + "', " +
+            "'" + item.IDNATRECEITA + "', " +
+            "'" + item.CODCEST + "', " +
+            "'" + item.TIPOMATEREMBA + "', " +
+            "'" + item.IDPARCEIRO + "', " +
+            "'" + item.TIPOEQPREDUCAOBASEDIFAL + "', " +
+            "'" + item.CODSELFCOLOR + "', " +
+            "'" + item.PERCENTDESCTOPROMOCAO + "', ");
+            if (item.CODSHOTCOLOR != null)
+            {
+                sb.Append("'" + item.CODSHOTCOLOR + "'");
+            }
+            else sb.Append(" NULL)");
             return sb;
         }
 
@@ -458,6 +594,7 @@ namespace ExportadorDados
         }
         private static DataTable CreateDataTable()
         {
+            DataTable dataTableP = new DataTable();
             try
             {
                 FbConnection fbConnectionPrincipal = new FbConnection
@@ -469,20 +606,16 @@ namespace ExportadorDados
                     ConnectionString = ConfigurationManager.ConnectionStrings["strFirebirdSecundaria"].ToString()
                 };
 
-                FbDataAdapter fbDataAdapterPrimario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '000398'", fbConnectionPrincipal);
-                FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '000398'", fbConnectionSecundaria);
+                FbDataAdapter fbDataAdapterPrimario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '003117'", fbConnectionPrincipal);
+                FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '006354'", fbConnectionSecundaria);
 
-                DataTable dataTableP = new DataTable();
                 DataTable dataTableS = new DataTable();
-                DataTable dataTableT = new DataTable();
 
                 fbDataAdapterPrimario.Fill(dataTableP);
                 fbDataAdapterSecundario.Fill(dataTableS);
 
                 dataTableP.Merge(dataTableS);
 
-                var Produtos = dataTableP.AsEnumerable().Distinct().CopyToDataTable();
-                return Produtos;
             }
             catch (Exception ex)
             {
@@ -490,7 +623,7 @@ namespace ExportadorDados
                 Console.WriteLine(ex.Message);
                 Thread.Sleep(1000000);
             }
-            return produt
+            return dataTableP.AsEnumerable().Distinct().CopyToDataTable();
         }
     }
 }
