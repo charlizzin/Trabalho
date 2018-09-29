@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.IO;
 
 namespace ExportadorDados
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // Crio um objeto de mapeamento para a classe User
             var produtosMapper = new MapperFields<Produto>();
@@ -27,20 +28,51 @@ namespace ExportadorDados
             // Percorro minha lista e mostro o resultado
             foreach (var item in produtos)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-
                 StringBuilder sb = GetStringBuilder(item);
 
-                Console.WriteLine(sb);
-
-                Console.ReadKey();
+                InsercaoDadosBd(sb);
             }
+        }
+
+        private static void InsercaoDadosBd(StringBuilder sb)
+        {
+            FbConnection fbConnectionSecundaria = new FbConnection
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["strFirebirdSecundaria"].ToString()
+            };
+            try
+            {
+                fbConnectionSecundaria.Open();
+                if (fbConnectionSecundaria.State == ConnectionState.Open)
+                {
+                    FbTransaction fbTransaction = fbConnectionSecundaria.BeginTransaction();
+                    FbCommand fbCommand = new FbCommand
+                    {
+                        CommandText = sb.ToString(),
+                        Connection = fbTransaction.Connection,
+                        Transaction = fbTransaction
+                    };
+                    fbCommand.ExecuteNonQuery();
+                    fbTransaction.Commit();
+                    fbCommand.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                fbConnectionSecundaria.Close();
+                Console.WriteLine(sb.ToString() + ex.Message);
+                Thread.Sleep(10000);
+            }
+            finally
+            {
+            }
+
         }
 
         private static StringBuilder GetStringBuilder(Produto item)
         {
             StringBuilder sb = new StringBuilder();
-
+            #region
             sb.Append(sql + "'" + item.CODPROD + "', " +
                             "'" + item.ATIVO + "', " +
                             "'" + item.REFERENCIA + "', " +
@@ -87,57 +119,59 @@ namespace ExportadorDados
                             "'" + item.MULTDIVIDE + "', ");
             if (item.PR_ULT_ENT1 != 0)
             {
-                sb.Append("" + item.PR_ULT_ENT1.ToString().Replace(",",".") + ", ");
+                sb.Append("" + item.PR_ULT_ENT1.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DATA_ULT_ENT1.Day != 1 || item.DATA_ULT_ENT1.Month != 1 || item.DATA_ULT_ENT1.Year != 1)
             {
-                sb.Append("'" + item.DATA_ULT_ENT1.ToString("yyyy-MM-dd hh:mm:ss").Replace("/","-") + "', ");
+                sb.Append("'" + item.DATA_ULT_ENT1.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.QUANT_ULT_ENT1 != 0)
             {
                 sb.Append("" + item.QUANT_ULT_ENT1.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
-            sb.Append("" + item.FORNEC_ULT_ENT1 + ", ");
+            else sb.Append(" NULL, ");
+            sb.Append("'" + item.FORNEC_ULT_ENT1 + "', ");
             if (item.PR_ULT_ENT2 != 0)
             {
-                sb.Append("" + item.PR_ULT_ENT2.ToString().Replace(",", ".") + "");
+                sb.Append("" + item.PR_ULT_ENT2.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DATA_ULT_ENT2.Day != 1 || item.DATA_ULT_ENT2.Month != 1 || item.DATA_ULT_ENT2.Year != 1)
             {
                 sb.Append("'" + item.DATA_ULT_ENT2.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.QUANT_ULT_ENT2 != 0)
             {
                 sb.Append("" + item.QUANT_ULT_ENT2.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
+            sb.Append("'" + item.FORNEC_ULT_ENT2 + "', ");
             if (item.PR_ULT_ENT3 != 0)
             {
                 sb.Append("" + item.PR_ULT_ENT3.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DATA_ULT_ENT3.Day != 1 || item.DATA_ULT_ENT3.Month != 1 || item.DATA_ULT_ENT3.Year != 1)
             {
                 sb.Append("'" + item.DATA_ULT_ENT3.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.QUANT_ULT_ENT3 != 0)
             {
                 sb.Append("" + item.QUANT_ULT_ENT3.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
+            sb.Append("'" + item.FORNEC_ULT_ENT3 + "', ");
             sb.Append("" + item.DVV.ToString().Replace(",", ".") + ", " +
             "" + item.LUCRO.ToString().Replace(",", ".") + ", ");
             if (item.SUGESTAO != 0)
             {
                 sb.Append("" + item.SUGESTAO.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("" + item.PRECO.ToString().Replace(",", ".") + ", " +
             "'" + item.PRODBLOQUEADO + "', " +
             "'" + item.CAMPOLIVRE1 + "', " +
@@ -149,30 +183,30 @@ namespace ExportadorDados
             {
                 sb.Append("'" + item.NOTA_ULT_ENT1 + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.NOTA_ULT_ENT2 != null)
             {
                 sb.Append("'" + item.NOTA_ULT_ENT2 + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.NOTA_ULT_ENT3 != null)
             {
                 sb.Append("'" + item.NOTA_ULT_ENT3 + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.CONTROLESERIE != null)
             {
-                sb.Append("'" + item.CONTROLESERIE + "'");
+                sb.Append("'" + item.CONTROLESERIE + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.CODPRODBAIXA + "', " +
             "" + item.FATORCONVBAIXA.ToString().Replace(",", ".") + ", " +
             "'" + item.MULTDIVBAIXA + "', ");
             if (item.CODFRETE != null)
             {
-                sb.Append("'" + item.CODFRETE + "'");
+                sb.Append("'" + item.CODFRETE + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.DT_CADASTRO.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', " +
             "'" + item.DESCRICAOPRECO + "', " +
             "" + item.PRECO2.ToString().Replace(",", ".") + ", " +
@@ -183,40 +217,40 @@ namespace ExportadorDados
             "" + item.LUCRO3.ToString().Replace(",", ".") + ", ");
             if (item.ITEMPORTARIA790 != null)
             {
-                sb.Append("'" + item.ITEMPORTARIA790 + "'");
+                sb.Append("'" + item.ITEMPORTARIA790 + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.ENVIADO != null)
             {
-                sb.Append("'" + item.ENVIADO + "'");
+                sb.Append("'" + item.ENVIADO + "', ");
             }
-            else sb.Append(" NULL,");
-            sb.Append("'" + item.PRECODOLAR.ToString().Replace(",", ".") + "', ");
+            else sb.Append(" NULL, ");
+            sb.Append("" + item.PRECODOLAR.ToString().Replace(",", ".") + ", ");
             if (item.DATA_ULT_ALTERACAO.Day != 1 || item.DATA_ULT_ALTERACAO.Month != 1 || item.DATA_ULT_ALTERACAO.Year != 1)
             {
                 sb.Append("'" + item.DATA_ULT_ALTERACAO.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
-            sb.Append("'" + item.PERCPERDA.ToString().Replace(",", ".") + "', " +
-            "'" + item.PRECOPROMO + "', ");
+            else sb.Append(" NULL, ");
+            sb.Append("" + item.PERCPERDA.ToString().Replace(",", ".") + ", " +
+            "" + item.PRECOPROMO + ", ");
             if (item.DATAINIPROMO.Day != 1 || item.DATAINIPROMO.Month != 1 || item.DATAINIPROMO.Year != 1)
             {
                 sb.Append("'" + item.DATAINIPROMO.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DATAFIMPROMO.Day != 1 || item.DATAFIMPROMO.Month != 1 || item.DATAFIMPROMO.Year != 1)
             {
                 sb.Append("'" + item.DATAFIMPROMO.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.SUBSTRIBSAIDA + "', " +
             "" + item.PERCBASESUBSTRIBSAIDA.ToString().Replace(",", ".") + ", " +
             "" + item.PERCICMSSUBSTRIBSAIDA.ToString().Replace(",", ".") + ", ");
             if (item.TEMSUBITENS != null)
             {
-                sb.Append("'" + item.TEMSUBITENS + "'");
+                sb.Append("'" + item.TEMSUBITENS + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.CODSEGMENTOSUBTRIBSAIDA + "', " +
             "" + item.ALIQICMSDIVERSOS.ToString().Replace(",", ".") + ", " +
             "" + item.BASEICMSDIVERSOS.ToString().Replace(",", ".") + ", " +
@@ -234,22 +268,22 @@ namespace ExportadorDados
             "'" + item.MENSAGEMDIVERSOS2 + "', ");
             if (item.CONTROLELOTE != null)
             {
-                sb.Append("'" + item.CONTROLELOTE + "'");
+                sb.Append("'" + item.CONTROLELOTE + "', ");
             }
-            else sb.Append(" NULL,");
-            sb.Append("'" + item.GRADE + "', ");
+            else sb.Append(" NULL, ");
+            sb.Append("" + item.GRADE + ", ");
             if (item.ACEITAPRECOZERO != null)
             {
-                sb.Append("'" + item.ACEITAPRECOZERO + "'");
+                sb.Append("'" + item.ACEITAPRECOZERO + "', ");
             }
-            else sb.Append(" NULL,");
-            sb.Append("'" + item.VLRCOBRAROPER.ToString().Replace(",", ".") + "', " +
+            else sb.Append(" NULL, ");
+            sb.Append("" + item.VLRCOBRAROPER.ToString().Replace(",", ".") + ", " +
             "" + item.COMISSAOVLR.ToString().Replace(",", ".") + ", ");
             if (item.GARANTIA != 0)
             {
                 sb.Append("'" + item.GARANTIA + "'");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("" + item.IPIANTIGO.ToString().Replace(",", ".") + ", " +
             "" + item.CUSTODOLAR.ToString().Replace(",", ".") + ", " +
             "" + item.ALIQICMSPDV.ToString().Replace(",", ".") + ", ");
@@ -257,15 +291,15 @@ namespace ExportadorDados
             {
                 sb.Append("'" + item.TEMREBATEFINANC + "'");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("" + item.LUCRO4.ToString().Replace(",", ".") + ", " +
             "'" + item.DESCRICAOPRECO4 + "', " +
             "" + item.PRECO4.ToString().Replace(",", ".") + ", ");
             if (item.PRODBALANCA != null)
             {
-                sb.Append("'" + item.PRODBALANCA + "'");
+                sb.Append("'" + item.PRODBALANCA + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.SUBSTRIBSAIDAR1 + "', " +
             "" + item.PERCBASESUBSTRIBSAIDAR1.ToString().Replace(",", ".") + ", " +
             "" + item.PERCICMSSUBSTRIBSAIDAR1.ToString().Replace(",", ".") + ", " +
@@ -280,50 +314,45 @@ namespace ExportadorDados
             {
                 sb.Append("" + item.TIPOMEDICAMENTO + "");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DESCPERCPADRAO > 0)
             {
                 sb.Append("" + item.DESCPERCPADRAO.ToString().Replace(",", ".") + "");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.LUCROPREVISTO > 0)
             {
                 sb.Append("" + item.LUCROPREVISTO.ToString().Replace(",", ".") + "");
             }
-            else sb.Append(" NULL,");
-            if (item.LUCROPREVISTO > 0)
-            {
-                sb.Append("" + item.LUCROPREVISTO.ToString().Replace(",", ".") + "");
-            }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.REDUTOR > 0)
             {
                 sb.Append("" + item.REDUTOR.ToString().Replace(",", ".") + "");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.ITEMPORTARIAFORAUF != null)
             {
-                sb.Append("'" + item.ITEMPORTARIAFORAUF + "'");
+                sb.Append("'" + item.ITEMPORTARIAFORAUF + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.DATA_ULT_REAJUSTE.Day != 1 || item.DATA_ULT_REAJUSTE.Month != 1 || item.DATA_ULT_REAJUSTE.Year != 1)
             {
-                sb.Append("'" + item.DATA_ULT_REAJUSTE.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "'");
+                sb.Append("'" + item.DATA_ULT_REAJUSTE.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             if (item.PRECO_ANTERIOR != 0)
             {
-                sb.Append("" + item.PRECO_ANTERIOR.ToString().Replace(",", ".") + "");
+                sb.Append("" + item.PRECO_ANTERIOR.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("'" + item.CODVOLUME + "', " +
             "'" + item.FRACIONADO + "', " +
             "'" + item.CODGENEROITEM + "', ");
             if (item.CUSTOOPERC != 0)
             {
-                sb.Append("" + item.CUSTOOPERC.ToString().Replace(",", ".") + "");
+                sb.Append("" + item.CUSTOOPERC.ToString().Replace(",", ".") + ", ");
             }
-            else sb.Append(" NULL,");
+            else sb.Append(" NULL, ");
             sb.Append("" + item.PERC_IVA.ToString().Replace(",", ".") + ", " +
             "" + item.VALORIPI.ToString().Replace(",", ".") + ", " +
             "'" + item.TIPOENTREGA + "', " +
@@ -343,9 +372,13 @@ namespace ExportadorDados
             "'" + item.CODPRODPAI + "', " +
             "'" + item.CODFAMILIA + "', " +
             "'" + item.CODTIPOPRODUTO + "', " +
-            "'" + item.CODPRODANP + "', " +
-            "'" + item.VERSION.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', " +
-            "'" + item.AGROTOXICO + "', " +
+            "'" + item.CODPRODANP + "', ");
+            if (item.VERSION.Day != 1 || item.VERSION.Month != 1 || item.VERSION.Year != 1)
+            {
+                sb.Append("'" + item.VERSION.ToString("yyyy-MM-dd hh:mm:ss").Replace("/", "-") + "', ");
+            }
+            else sb.Append(" NULL, ");
+            sb.Append("'" + item.AGROTOXICO + "', " +
             "'" + item.CODIGOMAPA + "', " +
             "'" + item.CODIGOEMBALAGEM + "', " +
             "" + item.ETQPRECOBASE + ", " +
@@ -376,9 +409,10 @@ namespace ExportadorDados
             "" + item.PERCENTDESCTOPROMOCAO.ToString().Replace(",", ".") + ", ");
             if (item.CODSHOTCOLOR != null)
             {
-                sb.Append("'" + item.CODSHOTCOLOR + "'");
+                sb.Append("'" + item.CODSHOTCOLOR + "')");
             }
             else sb.Append(" NULL)");
+            #endregion
             return sb;
         }
 
@@ -392,6 +426,7 @@ namespace ExportadorDados
             {
                 users.Add(new Produto
                 {
+                    #region
                     CODPROD = item["CODPROD"].ToString(),
                     ATIVO = item["ATIVO"].ToString(),
                     REFERENCIA = item["REFERENCIA"].ToString(),
@@ -587,6 +622,7 @@ namespace ExportadorDados
                     CODSELFCOLOR = item["CODSELFCOLOR"].ToString(),
                     PERCENTDESCTOPROMOCAO = Convert.ToDouble(item["PERCENTDESCTOPROMOCAO"].ToString()),
                     CODSHOTCOLOR = item["CODSHOTCOLOR"].ToString()
+                    #endregion
                 });
             }
 
@@ -597,17 +633,9 @@ namespace ExportadorDados
             DataTable dataTableP = new DataTable();
             try
             {
-                FbConnection fbConnectionPrincipal = new FbConnection
-                {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["strFirebirdPrincipal"].ToString()
-                };
-                FbConnection fbConnectionSecundaria = new FbConnection
-                {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["strFirebirdSecundaria"].ToString()
-                };
-
-                FbDataAdapter fbDataAdapterPrimario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '003117'", fbConnectionPrincipal);
-                FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO WHERE PRO.CODPROD = '003117'", fbConnectionSecundaria);
+                conexaoFireBird conexaoFireBird = new conexaoFireBird();
+                FbDataAdapter fbDataAdapterPrimario = new FbDataAdapter("SELECT * FROM PRODUTO PRO ORDER BY PRO.CODPROD", conexaoFireBird.conexaoPrimaria());
+                FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO ORDER BY PRO.CODPROD", conexaoFireBird.conexaoSecundaria());
 
                 DataTable dataTableS = new DataTable();
 
@@ -616,6 +644,8 @@ namespace ExportadorDados
 
                 dataTableP.Merge(dataTableS);
 
+                conexaoFireBird.conexaoPrimaria().Close();
+                conexaoFireBird.conexaoSecundaria().Close();
             }
             catch (Exception ex)
             {
@@ -624,7 +654,6 @@ namespace ExportadorDados
                 Thread.Sleep(1000000);
             }
             return dataTableP.AsEnumerable().Distinct().CopyToDataTable();
-
         }
     }
 }

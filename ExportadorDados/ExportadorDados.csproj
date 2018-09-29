@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="conexaoFireBird.cs" />
     <Compile Include="MapFieldNameAttribute.cs" />
     <Compile Include="MapperFields.cs" />
     <Compile Include="Produto.cs" />
