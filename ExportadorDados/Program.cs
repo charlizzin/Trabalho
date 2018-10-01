@@ -633,6 +633,7 @@ namespace ExportadorDados
             DataTable dataTableP = new DataTable();
             try
             {
+
                 conexaoFireBird conexaoFireBird = new conexaoFireBird();
                 FbDataAdapter fbDataAdapterPrimario = new FbDataAdapter("SELECT * FROM PRODUTO PRO ORDER BY PRO.CODPROD", conexaoFireBird.conexaoPrimaria());
                 FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO ORDER BY PRO.CODPROD", conexaoFireBird.conexaoSecundaria());
