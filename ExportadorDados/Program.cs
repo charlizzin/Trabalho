@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.IO;
+using System.Collections;
 
 namespace ExportadorDados
 {
@@ -639,14 +640,44 @@ namespace ExportadorDados
                 FbDataAdapter fbDataAdapterSecundario = new FbDataAdapter("SELECT * FROM PRODUTO PRO ORDER BY PRO.CODPROD", conexaoFireBird.conexaoSecundaria());
 
                 DataTable dataTableS = new DataTable();
+                DataTable dataTableG = new DataTable();
 
                 fbDataAdapterPrimario.Fill(dataTableP);
                 fbDataAdapterSecundario.Fill(dataTableS);
 
-                dataTableP.Merge(dataTableS);
+                dataTableG = dataTableP;
 
                 conexaoFireBird.conexaoPrimaria().Close();
                 conexaoFireBird.conexaoSecundaria().Close();
+
+                List<string> listP = new List<string>();
+                List<string> listS = new List<string>();
+                if (dataTableP.Rows.Count != 0)
+                {
+                    for (int p = 0; p < dataTableP.Rows.Count; p++)
+                    {
+                        string pl = Convert.ToString(dataTableP.Rows[p].ItemArray[0]);
+                        listP.Add(pl);
+                    }
+                    for (int s = 0; s < dataTableS.Rows.Count; s++)
+                    {
+                        string sl = Convert.ToString(dataTableP.Rows[s].ItemArray[0]);
+                        listS.Add(sl);
+                    }
+
+                    List<int> listCont = new List<int>();
+                    int cont = 0;
+                    for (int i = 0; i < listP.Count; i++)
+                    {
+                        cont++;
+                        string aux = listP[i];
+                        if (listS.Contains(aux))
+                        {
+                            listCont.Add(cont);
+                        }
+                    }
+                    Console.ReadKey();
+                }
             }
             catch (Exception ex)
             {
